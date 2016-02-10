@@ -4,16 +4,45 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Move the cursor</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
 	<script>
+		$( document ).ready(function() {
+			var centerX, centerY;
 
+			var img = $("img")[0]; // Get my img elem
+
+			$("#person") 
+				.attr("src", $(img).attr("src"))
+				.load(function() {
+					var $this = $(this);
+					var offset = $this.offset();
+					centerX = offset.left + (this.width / 2);   // Note: $(this).width() will not
+					centerY = offset.top + this.height / 2; // work for in memory images.
+					//console.log("offset.left = " + offset.left);
+					//console.log("center = " + centerX + " : " + centerY);
+				});
+
+			$(document).mousemove(function(event){
+				var angle = Math.atan2(centerX - event.pageX, centerY - event.pageY) * (180 / Math.PI);
+				angle += 90;
+				if(angle < 0) { 
+					angle += 360;
+				}
+				console.log("angle = " + angle);
+			});
+
+		});
+
+		
 	</script>
 
 	<div class="container">
 		<div class="col-xs-4"></div>
 		<div class="col-xs-1">
-			<img src="/img/front.png">
+			<img id="person" src="/img/front.png">
 		</div>
 	</div>
 
