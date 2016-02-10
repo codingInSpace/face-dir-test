@@ -34,29 +34,37 @@
 				if(angle < 0) { 
 					angle += 360;
 				}
-				console.log("angle = " + angle);
+				//console.log("angle = " + angle);
 
-				if (angle <= 20 || angle > 340)
-					currentAlt = imgAlts[0];
-				else if (angle > 20 && angle <= 70)
-					currentAlt = imgAlts[1];
-				else if (angle > 70 && angle <= 110)
-					currentAlt = imgAlts[2];
-				else if (angle > 110 && angle <= 160)
-					currentAlt = imgAlts[3];
-				else if (angle > 160 && angle <= 200)
-					currentAlt = imgAlts[4];
-				else if (angle > 200 && angle <= 250)
-					currentAlt = imgAlts[5];
-				else if (angle > 250 && angle <= 290)
-					currentAlt = imgAlts[6];
-				else if (angle > 290 && angle <= 340)
-					currentAlt = imgAlts[7];
-				else
-					currentAlt = 'img/front.png';
+				// distance of cursor to center
+				var distance = Math.sqrt( Math.pow((centerX - event.pageX),2) + Math.pow((centerY - event.pageY),2) );
+				//console.log("d = " + distance);
 				
-				
-					$("#person").attr('src', currentAlt);
+				if (distance >= 40) {
+					if (angle <= 20 || angle > 340)
+						currentAlt = imgAlts[0];
+					else if (angle > 20 && angle <= 70)
+						currentAlt = imgAlts[1];
+					else if (angle > 70 && angle <= 110)
+						currentAlt = imgAlts[2];
+					else if (angle > 110 && angle <= 160)
+						currentAlt = imgAlts[3];
+					else if (angle > 160 && angle <= 200)
+						currentAlt = imgAlts[4];
+					else if (angle > 200 && angle <= 250)
+						currentAlt = imgAlts[5];
+					else if (angle > 250 && angle <= 290)
+						currentAlt = imgAlts[6];
+					else if (angle > 290 && angle <= 340)
+						currentAlt = imgAlts[7];
+					else
+						currentAlt = 'img/front.png';
+					
+						$("#person").attr('src', currentAlt);
+				} else {
+						$("#person").attr('src', 'img/front.png');
+				}
+
 			});
 
 		});
