@@ -11,13 +11,13 @@
 	<script>
 		$( document ).ready(function() {
 			var centerX, centerY;
-			var img = $("img")[0]; // Get img elem
-
+			var img = $("#person"); 
+			
 			var imgAlts = ['img/right.png', 'img/upper-right.png', 'img/up.png', 'img/upper-left.png', 'img/left.png', 'img/lower-left.png', 'img/down.png', 'img/lower-right.png']; 
 			var currentAlt;
 
 			$("#person") 
-				.attr("src", $(img).attr("src"))
+				.attr("src", $(img).attr("img/front.png"))
 				.load(function() {
 					var $this = $(this);
 					var offset = $this.offset();
