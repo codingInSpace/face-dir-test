@@ -11,7 +11,7 @@
 	<script>
 		$( document ).ready(function() {
 			var centerX, centerY;
-			var img = $("img")[0]; // Get my img elem
+			var img = $("img")[0]; // Get img elem
 
 			var imgAlts = ['img/right.png', 'img/upper-right.png', 'img/up.png', 'img/upper-left.png', 'img/left.png', 'img/lower-left.png', 'img/down.png', 'img/lower-right.png']; 
 			var currentAlt;
@@ -21,10 +21,8 @@
 				.load(function() {
 					var $this = $(this);
 					var offset = $this.offset();
-					centerX = offset.left + (this.width / 2);   // Note: $(this).width() will not
-					centerY = offset.top + this.height / 2; // work for in memory images.
-					//console.log("offset.left = " + offset.left);
-					//console.log("center = " + centerX + " : " + centerY);
+					centerX = offset.left + (this.width / 2);   
+					centerY = offset.top + this.height / 2; 
 				});
 
 			$(document).mousemove(function(event){
